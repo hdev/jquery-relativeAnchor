@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>JQuery relativeAnchor Example</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <style>
+#container {
+  overflow: hidden;
+  height: 20px;
+}
+#container div {
+  height: 20px;
+}
+#space {
+  height: 2000px;
+}
+  </style>
+  <script src="js/vendor/modernizr-2.7.1.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<h1>Jquery relativeAnchor Demo</h1>
+
+<div>
+  <ul>
+    <li><a href="#item1">Show Item 1</a></li>
+    <li><a href="#item2">Show Item 2</a></li>
+    <li><a href="#item3">Show Item 3</a></li>
+    <li><a href="#item4">Show Item 4</a></li>
+    <li><a href="#item5">Show Item 5</a></li>
+    <li><a href="#item6">Show Item 6 (outside Container)</a></li>
+  </ul>
+</div>
+
+<div id="container">
+  <div id="item1">
+    Item 1
+  </div>
+  <div id="item2">
+    Item 2
+  </div>
+  <div id="item3">
+    Item 3
+  </div>
+  <div id="item4">
+    Item 4
+  </div>
+  <div id="item5">
+    Item 5
+  </div>
+</div>
+
+<div id="item6">
+  Item 6 (outside Container)
+</div>
+
+<div id="space"></div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+<script src="../src/jquery.relativeAnchor.js"></script>
+<script>
+  $(document).ready(function() {
+    $.relativeAnchor();
+  });
+</script>
+</body>
+</html>
