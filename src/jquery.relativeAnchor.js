@@ -14,18 +14,28 @@
  */
 (function($) {
     function Init() {
-        $("a[href*=#]").click(function (e) {
+        $("a[href*=#]").each(function() {
+            var link = $(this);
             var id = this.href.substr(this.href.indexOf("#") + 1);
-            var elem = $("#" + id)[0];
-            $(elem).parents().each(function () {
-                if ($(this).css("overflow") == "hidden") {
-                    $(this).scrollTop(elem.offsetTop - this.offsetTop);
-                    e.preventDefault();
-                }
+            var anchor = $("#" + id)[0];
+
+            // find a viable container for relativeAnchor
+            var container = _.find($(anchor).parents(), function(container) {
+                return _.find(["overflow", "overflow-x", "overflow-y"], function(attr) {
+                    return _.find(["hidden", "auto", "scroll"], function(value) {
+                        return $(container).css(attr) == value;
+                    })
+                })
             });
+
+            if(container) { // has viable container
+                link.click(function(e) {
+                    $(container).scrollTop(anchor.offsetTop - container.offsetTop);
+                    e.preventDefault();
+                })
+            }
         });
     }
-
 
     $.relativeAnchor = function( options ) {
         return new Init(this, options);
